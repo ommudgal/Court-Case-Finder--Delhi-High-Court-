@@ -17,45 +17,42 @@ This project is a web-based application designed to retrieve case details from t
 
 ## Prerequisites
 
-- Python 3.11 or higher
-- Docker and Docker Compose
-- A `.env` file for environment variables (if required)
+- Docker and Docker Compose installed on your system
+- A `.env` file for environment variables
 
-## Installation
+### `.env` File
+
+The `.env` file is used to store sensitive information like database credentials. Create a `.env` file in the root directory of the project with the following content:
+
+```env
+MYSQL_DATABASE=courtdb
+MYSQL_ROOT_PASSWORD=rootpass
+MYSQL_USER=user
+MYSQL_PASSWORD=userpass
+```
+
+Ensure the `.env` file is not committed to version control by adding it to `.gitignore`.
+
+## Installation and Setup
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/ommudgal/Court-Case-Finder--Delhi-High-Court-
-   cd Court-Case-Finder--Delhi-High-Court-
+   git clone https://github.com/your-username/courtdata.git
+   cd courtdata
    ```
 
-2. Install dependencies:
+2. Create a `.env` file in the root directory as described above.
+
+3. Start the application using Docker Compose:
    ```bash
-   pip install -r requirements.txt
+   docker-compose up -d
    ```
 
-3. Set up .env file
+   - This will:
+     - Start a MySQL database container with the schema initialized using [`init.sql`](init.sql ).
+     - Start the Streamlit application container.
 
-4. Set up the database:
-   - Ensure Docker is installed and running.
-   - Start the MySQL service using Docker Compose:
-     ```bash
-     docker-compose up -d
-     ```
-
-5. Initialize the database:
-   - The `init.sql` file will automatically set up the database schema and initial data when the MySQL container starts.
-
-## Usage
-
-1. Run the Streamlit application:
-   ```bash
-   streamlit run app/app.py
-   ```
-
-2. Open the application in your browser at `http://localhost:8501`.
-
-3. Use the form to search for case details by selecting the case type, entering the case number, and selecting the year.
+4. Access the application in your browser at `http://localhost:8501`.
 
 ## Project Structure
 
@@ -65,10 +62,20 @@ This project is a web-based application designed to retrieve case details from t
 │   ├── app.py                # Main Streamlit application
 │   ├── web_functions.py      # Helper functions for web scraping
 ├── docker-compose.yaml       # Docker Compose configuration
+├── Dockerfile                # Dockerfile for the Streamlit application
 ├── init.sql                  # SQL script to initialize the database
 ├── requirements.txt          # Python dependencies
+├── .env                      # Environment variables (not included in version control)
 └── README.md                 # Project documentation
 ```
+
+## Usage
+
+1. Open the application in your browser at `http://localhost:8501`.
+
+2. Use the form to search for case details by selecting the case type, entering the case number, and selecting the year.
+
+3. The database is accessible via the MySQL container. Use the credentials from the [`.env`](.env ) file to connect.
 
 ## Dependencies
 
@@ -82,6 +89,13 @@ The project uses the following Python libraries:
 - `urlextract==1.9.0`
 - `lxml==5.1.0`
 - `python-dotenv==1.0.1`
+
+## Stopping the Application
+
+To stop the application and remove the containers, run:
+```bash
+docker-compose down
+```
 
 ## License
 

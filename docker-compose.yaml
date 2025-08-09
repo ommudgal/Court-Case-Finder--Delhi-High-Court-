@@ -1,19 +1,36 @@
-version: '3.9'
-
 services:
   db:
     image: mysql:8.0
     restart: always
     environment:
-      MYSQL_DATABASE: $(MYSQL_DATABASE)
-      MYSQL_ROOT_PASSWORD: $(MYSQL_ROOT_PASSWORD)
-      MYSQL_USER: $(MYSQL_USER)
-      MYSQL_PASSWORD: $(MYSQL_PASSWORD)
+      MYSQL_DATABASE: courtdb
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpass
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - courtdata_net
+
+  courtdata:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - "8501:8501"
+    networks:
+      - courtdata_net
+    environment:
+      DB_HOST: db
 
 volumes:
   mysql_data:
+
+networks:
+  courtdata_net:
+    driver: bridge
