@@ -34,14 +34,16 @@ This project is a web-based application designed to retrieve case details from t
    pip install -r requirements.txt
    ```
 
-3. Set up the database:
+3. Set up .env file
+
+4. Set up the database:
    - Ensure Docker is installed and running.
    - Start the MySQL service using Docker Compose:
      ```bash
      docker-compose up -d
      ```
 
-4. Initialize the database:
+5. Initialize the database:
    - The `init.sql` file will automatically set up the database schema and initial data when the MySQL container starts.
 
 ## Usage
