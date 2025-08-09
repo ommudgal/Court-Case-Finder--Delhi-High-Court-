@@ -5,12 +5,15 @@ services:
     image: mysql:8.0
     restart: always
     environment:
-      MYSQL_DATABASE: courtdb
-      MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_USER: user
-      MYSQL_PASSWORD: userpass
+      MYSQL_DATABASE: $(MYSQL_DATABASE)
+      MYSQL_ROOT_PASSWORD: $(MYSQL_ROOT_PASSWORD)
+      MYSQL_USER: $(MYSQL_USER)
+      MYSQL_PASSWORD: $(MYSQL_PASSWORD)
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  mysql_data:

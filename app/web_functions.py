@@ -18,9 +18,9 @@ class Database:
     def __init__(self, host=None, user=None, password=None, database=None):
         self.connection = mysql.connector.connect(
             host=host or os.getenv("DB_HOST", "localhost"),
-            user=user or os.getenv("DB_USER", "root"),
-            password=password or os.getenv("DB_PASS", "rootpass"),
-            database=database or os.getenv("DB_NAME", "courtdb"),
+            user=user or os.getenv("MYSQL_USER", "root"),
+            password=password or os.getenv("MYSQL_PASSWORD", "rootpass"),
+            database=database or os.getenv("MYSQL_DATABASE", "courtdb"),
         )
         self.cursor = self.connection.cursor()
 

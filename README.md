@@ -25,8 +25,8 @@ This project is a web-based application designed to retrieve case details from t
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/courtdata.git
-   cd courtdata
+   git clone https://github.com/ommudgal/Court-Case-Finder--Delhi-High-Court-
+   cd Court-Case-Finder--Delhi-High-Court-
    ```
 
 2. Install dependencies:
