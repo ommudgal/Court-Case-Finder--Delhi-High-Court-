@@ -37,8 +37,8 @@ Ensure the `.env` file is not committed to version control by adding it to `.git
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/courtdata.git
-   cd courtdata
+   git clone https://github.com/ommudgal/Court-Case-Finder--Delhi-High-Court-
+   cd Court-Case-Finder--Delhi-High-Court-
    ```
 
 2. Create a `.env` file in the root directory as described above.

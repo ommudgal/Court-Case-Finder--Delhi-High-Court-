@@ -13,7 +13,6 @@ COPY ./requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app app
-COPY init.sql .
 COPY .env .
 
 CMD ["streamlit", "run", "app/app.py"]
