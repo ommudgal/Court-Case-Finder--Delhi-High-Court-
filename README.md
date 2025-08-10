@@ -1,5 +1,7 @@
 # Court Data Retrieval Application
 
+[![Demo Video]()](https://youtu.be/RXbpyOV6V5A)
+
 This project is a web-based application designed to retrieve case details from the Delhi High Court website. It allows users to search for case information by providing the case type, number, and year.
 
 ## Features
